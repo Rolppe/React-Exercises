@@ -1,0 +1,11 @@
+1. React = javascript library. Created by meta.
+
+2. React Component = independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
+
+3. Single-page application = html is loaded once. takes in json data.
+
+4. Declarative programming (versus imperative programming) = Declarative programming is higher level programming where we code "what is supposed to happen" where imperative is more core and describing "how it is done".
+
+5. JSX = syntax extension to JavaScript. Used to describe what UI should look like.
+
+6. Asynchronous (versus synchronous) = Synchronous tasks happen in order and you must finish task one before moving on to the next. Asynchronous tasks can be executed in any order and/or simultaneously.
