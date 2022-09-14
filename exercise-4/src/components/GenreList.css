@@ -1,0 +1,17 @@
+.genrelist {
+  padding: 1rem;
+  background-color: aquamarine;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(255, 157, 157, 0.25);
+}
+
+.genrelist h1 {
+  color: black;
+  font-size: 1rem;
+  flex: 1;
+  margin: 0 1rem;
+  background-color: white;
+}
