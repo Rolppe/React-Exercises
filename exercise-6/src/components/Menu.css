@@ -1,0 +1,12 @@
+.menu {
+  padding: 1rem;
+  background-color: rgb(117, 85, 85);
+  margin: 2rem auto;
+  max-width: 95%;
+  width: 50rem;
+}
+
+.menu h1 {
+  color: rgb(177, 26, 26);
+  text-shadow: 2px 2px #262525;
+}
