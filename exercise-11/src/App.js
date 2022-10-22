@@ -7,7 +7,7 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   const addTodoHandler = async (todo) => {
-    console.log(todo);
+    //console.log(todo);
     const response = await fetch(
       "https://todo-list-4aa0f-default-rtdb.europe-west1.firebasedatabase.app/todos.json",
       {
@@ -52,19 +52,17 @@ const App = () => {
   //     <br></br>
   //   </div>
   // ));
+  let content = todos.length <= 0 ? <p>no data</p> : <TodoList todos={todos} />;
+  //<section>{todos.length > 0 ? content : <p>No Data</p>} </section>
 
   return (
     <>
       <section>
         <AddTodo onAddTodo={addTodoHandler} />
       </section>
-      <section>
-        <TodoList todos={todos} />
-      </section>
+      <section>{content}</section>
     </>
   );
 };
 
 export default App;
-
-//      <section>{todos.length > 0 ? content : <p>No Data</p>} </section>

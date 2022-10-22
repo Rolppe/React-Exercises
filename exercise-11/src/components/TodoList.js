@@ -1,5 +1,7 @@
-const TodoList = (todos) => {
-  let content = todos.map((todo) => (
+const TodoList = (props) => {
+  console.log("todoList");
+
+  let content = props.todos.map((todo) => (
     <div key={todo.id}>
       <h2>{todo.text}</h2>
       <h3>{todo.date}</h3>
