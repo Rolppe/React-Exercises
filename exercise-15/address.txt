@@ -1,0 +1,5 @@
+https://react-exercise-15-production.up.railway.app
+
+This is deployed with railway. I didn't make separate repo
+for this because you can config it working with current
+repo by defining root folder.
