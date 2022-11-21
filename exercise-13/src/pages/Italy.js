@@ -16,7 +16,19 @@ const ItalyPage = () => {
   };
 
   const randomHandler = () => {
-    history.push(Math.random() > 0.5 ? "./" : "./brazil");
+    let randomNumber = Math.random();
+    if (randomNumber < 0.2) {
+      history.push("/");
+    } else if (randomNumber < 0.4) {
+      history.push("/brazil");
+    } else if (randomNumber < 0.6) {
+      history.push("/croatia");
+    } else if (randomNumber < 0.8) {
+      history.push("/india");
+    } else {
+      history.push("/ukraine");
+    }
+    //history.replace
   };
 
   const backToFinlandHandler = () => {

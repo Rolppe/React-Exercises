@@ -16,6 +16,15 @@ const MainNavigation = () => {
           <li>
             <Link to="/brazil">Brazil</Link>
           </li>
+          <li>
+            <Link to="/Croatia">Croatia</Link>
+          </li>
+          <li>
+            <Link to="/India">India</Link>
+          </li>
+          <li>
+            <Link to="/Ukraine">Ukraine</Link>
+          </li>
         </ul>
       </nav>
     </header>

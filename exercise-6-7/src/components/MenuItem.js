@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "./Menu.css";
 
 const MenuItem = (props) => {
-  const [name, setName] = useState(props.name);
-
   const clickHadler = () => {
     props.removeHandler(props.id);
   };

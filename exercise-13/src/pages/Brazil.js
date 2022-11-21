@@ -16,7 +16,19 @@ const BrazilPage = () => {
   };
 
   const randomHandler = () => {
-    history.push(Math.random() > 0.5 ? "./" : "./italy");
+    let randomNumber = Math.random();
+    if (randomNumber < 0.2) {
+      history.push("/");
+    } else if (randomNumber < 0.4) {
+      history.push("/italy");
+    } else if (randomNumber < 0.6) {
+      history.push("/croatia");
+    } else if (randomNumber < 0.8) {
+      history.push("/india");
+    } else {
+      history.push("/ukraine");
+    }
+    //history.replace
   };
 
   const backToFinlandHandler = () => {
