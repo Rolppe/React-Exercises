@@ -1,12 +1,20 @@
-import { Outlet } from "react-router-dom";
 import React from "react";
-import BootBar from "./components/BootBar";
+import { Route, Routes } from "react-router-dom";
+import Expenses from "./pages/Expenses";
+import Invoices from "./pages/Invoices";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <div>
-      <BootBar />
-      <Outlet />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="Expenses" element={<Expenses />} />
+          <Route path="Invoices" element={<Invoices />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
