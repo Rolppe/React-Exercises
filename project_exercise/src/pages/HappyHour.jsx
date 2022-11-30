@@ -1,4 +1,5 @@
 import React from "react";
+import { ToggleButton } from "react-bootstrap";
 
 export default function Expenses(props) {
   return (
@@ -6,6 +7,7 @@ export default function Expenses(props) {
       <h2>
         {props.twoHours ? "Data needs to be collected" : "Activate settings"}
       </h2>
+      <ToggleButton />
     </main>
   );
 }

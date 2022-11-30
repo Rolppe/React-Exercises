@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
 
 import PriceList from "../components/PriceList";
 import "./Prices.css";
