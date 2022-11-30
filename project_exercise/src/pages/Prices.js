@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import { useEffect, useState } from "react";
 import {
@@ -7,13 +6,10 @@ import {
 } from "../components/Functions";
 import PriceList from "../components/PriceList";
 
-export default function Home(props) {
-  const [priceData, setpriceData] = useState(null);
-  const [todayPrices, setTodayPrices] = useState([]);
+export default function Prices(props) {
   const [pricesToday, setPricesToday] = useState([null]);
 
   let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
-  let pricesTomorrow = null;
 
   useEffect(() => {
     fetch("https://ohjelmistoprojekti-production.up.railway.app/pricejson/")
@@ -32,7 +28,7 @@ export default function Home(props) {
 
   return (
     <main style={{ padding: "1rem 0" }}>
-      <h2>Home</h2>
+      <h2>Prices</h2>
       <ul>{pricesToday && <PriceList pricesToday={pricesToday} />}</ul>
     </main>
   );

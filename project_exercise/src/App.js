@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Expenses from "./pages/Expenses";
-import Invoices from "./pages/Invoices";
-import Home from "./pages/Home";
+import HappyHour from "./pages/HappyHour";
+import Settings from "./pages/Settings";
+import Prices from "./pages/Prices";
 import Layout from "./components/Layout";
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="Expenses" element={<Expenses />} />
-          <Route path="Invoices" element={<Invoices />} />
+          <Route index element={<Prices />} />
+          <Route path="HappyHour" element={<HappyHour />} />
+          <Route path="Settings" element={<Settings />} />
         </Route>
       </Routes>
     </div>
