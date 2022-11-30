@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function PriceItem(props) {
-  //console.log("PriceItem: " + price);
   let times = [
     "00",
     "01",

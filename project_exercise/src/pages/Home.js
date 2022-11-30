@@ -21,11 +21,7 @@ export default function Home(props) {
         return result.json();
       })
       .then((data) => {
-        //console.log(data.Prices[0].H00);
         setPricesToday(getCurrentPrices(dateToday, data));
-        //console.log(pricesToday);
-        //setpriceData(data);
-        //console.log(pricesToday);
       })
       .then(() => {});
   }, []);
@@ -34,13 +30,6 @@ export default function Home(props) {
     console.log("type of prices today: " + pricesToday[0]);
   }, [pricesToday]);
 
-  // function extractPricesArray(props) {
-  //   const pricesArray = [];
-  //   //const dummy = props.map((price) => console.log(price));
-  //   return props.map((price) => <div>{price}</div>);
-  // }
-
-  //<div>{prices.Klo_00}</div>
   return (
     <main style={{ padding: "1rem 0" }}>
       <h2>Home</h2>
@@ -48,6 +37,3 @@ export default function Home(props) {
     </main>
   );
 }
-
-//klo: {time}.00 price: {todayPrices[time]}
-//<div>{pricesToday && extractPricesArray(pricesToday)}</div>
