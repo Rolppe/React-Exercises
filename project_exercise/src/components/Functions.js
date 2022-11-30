@@ -8,8 +8,18 @@ export function getDateTodayAndTomorrow() {
   var dayTomorrow = tomorrow.getDate();
   var monthTomorrow = tomorrow.getMonth() + 1;
   var yearTomorrow = tomorrow.getFullYear();
-  let dateToday = yearToday + "-" + monthToday + "-" + dayToday;
-  let dateTomorrow = yearTomorrow + "-" + monthTomorrow + "-" + dayTomorrow;
+  let dateToday =
+    yearToday +
+    "-" +
+    ("0" + monthToday).slice(-2) +
+    "-" +
+    ("0" + dayToday).slice(-2);
+  let dateTomorrow =
+    yearTomorrow +
+    "-" +
+    ("0" + monthTomorrow).slice(-2) +
+    "-" +
+    ("0" + dayTomorrow).slice(-2);
 
   return [dateToday, dateTomorrow];
 }
