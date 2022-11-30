@@ -27,7 +27,7 @@ export default function PriceItem(props) {
     "22",
     "23",
   ];
-  console.log(props.index);
+  //console.log(props.index);
   return (
     <div>
       Klo: {times[props.index]} Price: {props.item} c/KWh

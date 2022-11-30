@@ -22,14 +22,16 @@ export default function Prices(props) {
       .then(() => {});
   }, []);
 
-  useEffect(() => {
-    console.log("type of prices today: " + pricesToday[0]);
-  }, [pricesToday]);
+  // useEffect(() => {
+  //   console.log("type of prices today: " + pricesToday[0]);
+  // }, [pricesToday]);
 
   return (
     <main style={{ padding: "1rem 0" }}>
       <h2>Prices</h2>
-      <ul>{pricesToday && <PriceList pricesToday={pricesToday} />}</ul>
+      <ul>
+        {pricesToday && <PriceList pricesToday={pricesToday} preKey="today" />}
+      </ul>
     </main>
   );
 }
