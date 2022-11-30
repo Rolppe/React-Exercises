@@ -5,12 +5,14 @@ import {
   getCurrentPrices,
 } from "../components/Functions";
 import PriceList from "../components/PriceList";
+import "./Prices.css";
 
 export default function Prices(props) {
   const [pricesToday, setPricesToday] = useState([null]);
+  const [pricesTomorrow, setPricesTomorrow] = useState([null]);
 
   let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
-
+  console.log(props.texti);
   useEffect(() => {
     fetch("https://ohjelmistoprojekti-production.up.railway.app/pricejson/")
       .then((result) => {
@@ -18,20 +20,31 @@ export default function Prices(props) {
       })
       .then((data) => {
         setPricesToday(getCurrentPrices(dateToday, data));
+        setPricesTomorrow(getCurrentPrices(dateTomorrow, data));
+        setPricesToday(getCurrentPrices(dateToday, data));
       })
       .then(() => {});
   }, []);
 
   // useEffect(() => {
-  //   console.log("type of prices today: " + pricesToday[0]);
+  //   console.log("type of prices today: " + pricesTomorrow[0]);
   // }, [pricesToday]);
 
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Prices</h2>
-      <ul>
-        {pricesToday && <PriceList pricesToday={pricesToday} preKey="today" />}
-      </ul>
+    <main className="Main">
+      <div className="float-container">
+        <div className="float-child">
+          <h5>Prices Today</h5>
+          {pricesToday && <PriceList pricesTime={pricesToday} preKey="today" />}
+        </div>
+        <div className="float-child">
+          <h5>Prices Tomorrow</h5>
+
+          {pricesTomorrow && (
+            <PriceList pricesTime={pricesTomorrow} preKey="tomorrow" />
+          )}
+        </div>
+      </div>
     </main>
   );
 }

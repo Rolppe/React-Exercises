@@ -1,9 +1,13 @@
 import React from "react";
 
-export default function Invoices() {
+export default function Settings(props) {
+  function chanceState() {
+    props.setTwoHours(!props.twoHours);
+  }
   return (
     <main style={{ padding: "1rem 0" }}>
-      <h2>Settings</h2>
+      <button onClick={chanceState}>Chache state</button>
+      <h2>{props.twoHours && "Settings"}</h2>
     </main>
   );
 }
