@@ -6,18 +6,29 @@ import Settings from "./pages/Settings";
 import Prices from "./pages/Prices";
 import Layout from "./components/Layout";
 import "./App.css";
+import {
+  getDateTodayAndTomorrow,
+  getCurrentPrices,
+} from "./components/Functions";
 
 function App() {
   const [twoHours, setTwoHours] = useState(false);
   const [pricesToday, setPricesToday] = useState([null]);
+  const [pricesTomorrow, setPricesTomorrow] = useState([null]);
 
+  let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
   useEffect(() => {
-    console.log("App twoHours state: " + twoHours);
-  }, [twoHours]);
-
-  useEffect(() => {
-    console.log("App prices today: " + pricesToday[0]);
-  }, [pricesToday]);
+    fetch("https://ohjelmistoprojekti-production.up.railway.app/pricejson/")
+      .then((result) => {
+        return result.json();
+      })
+      .then((data) => {
+        setPricesToday(getCurrentPrices(dateToday, data));
+        setPricesTomorrow(getCurrentPrices(dateTomorrow, data));
+        setPricesToday(getCurrentPrices(dateToday, data));
+      })
+      .then(() => {});
+  }, []);
 
   return (
     <div className="Main">
@@ -28,11 +39,11 @@ function App() {
             element={
               <Prices
                 pricesToday={pricesToday}
-                setPricesToday={setPricesToday}
+                pricesTomorrow={pricesTomorrow}
               />
             }
           />
-          <Route path="HappyHour" element={<HappyHour />} />
+          <Route path="HappyHour" element={<HappyHour twoHours={twoHours} />} />
           <Route
             path="Settings"
             element={<Settings twoHours={twoHours} setTwoHours={setTwoHours} />}
