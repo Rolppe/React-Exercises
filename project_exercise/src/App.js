@@ -12,11 +12,20 @@ import {
 } from "./components/Functions";
 
 function App() {
-  const [twoHours, setTwoHours] = useState(false);
+  const [twoHoursProgram, setTwoHoursProgram] = useState(false);
+  const [threeHoursProgram, setThreeHoursProgram] = useState(false);
+  let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
   const [pricesToday, setPricesToday] = useState([null]);
   const [pricesTomorrow, setPricesTomorrow] = useState([null]);
 
-  let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
+  useEffect(() => {
+    console.log("app twoHoursProgram: " + twoHoursProgram);
+  }, [twoHoursProgram]);
+
+  useEffect(() => {
+    console.log("app threeHoursProgram: " + threeHoursProgram);
+  }, [threeHoursProgram]);
+
   useEffect(() => {
     fetch("https://ohjelmistoprojekti-production.up.railway.app/pricejson/")
       .then((result) => {
@@ -43,10 +52,25 @@ function App() {
               />
             }
           />
-          <Route path="HappyHour" element={<HappyHour twoHours={twoHours} />} />
+          <Route
+            path="HappyHour"
+            element={
+              <HappyHour
+                twoHoursProgram={twoHoursProgram}
+                threeHoursProgram={threeHoursProgram}
+              />
+            }
+          />
           <Route
             path="Settings"
-            element={<Settings twoHours={twoHours} setTwoHours={setTwoHours} />}
+            element={
+              <Settings
+                twoHoursProgram={twoHoursProgram}
+                setTwoHoursProgram={setTwoHoursProgram}
+                threeHoursProgram={threeHoursProgram}
+                setThreeHoursProgram={setThreeHoursProgram}
+              />
+            }
           />
         </Route>
       </Routes>
