@@ -9,6 +9,8 @@ import "./App.css";
 import {
   getDateTodayAndTomorrow,
   getCurrentPrices,
+  getSettings,
+  storeSettings,
 } from "./components/Functions";
 
 function App() {
@@ -17,16 +19,19 @@ function App() {
   let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
   const [pricesToday, setPricesToday] = useState([null]);
   const [pricesTomorrow, setPricesTomorrow] = useState([null]);
+  const [settingsArrived, setSettingsArrived] = useState(false);
+  // useEffect(() => {
+  //   console.log("app twoHoursProgram: " + twoHoursProgram);
+  // }, [twoHoursProgram]);
+
+  // useEffect(() => {
+  //   console.log("app threeHoursProgram: " + threeHoursProgram);
+  // }, [threeHoursProgram]);
 
   useEffect(() => {
-    console.log("app twoHoursProgram: " + twoHoursProgram);
-  }, [twoHoursProgram]);
+    //storeSettings(twoHoursProgram, threeHoursProgram);
+    getSettings(setTwoHoursProgram, setThreeHoursProgram, setSettingsArrived);
 
-  useEffect(() => {
-    console.log("app threeHoursProgram: " + threeHoursProgram);
-  }, [threeHoursProgram]);
-
-  useEffect(() => {
     fetch("https://ohjelmistoprojekti-production.up.railway.app/pricejson/")
       .then((result) => {
         return result.json();
@@ -38,6 +43,12 @@ function App() {
       })
       .then(() => {});
   }, []);
+
+  useEffect(() => {
+    if (settingsArrived) {
+      storeSettings(twoHoursProgram, threeHoursProgram);
+    }
+  }, [twoHoursProgram, threeHoursProgram]);
 
   return (
     <div className="Main">
@@ -58,6 +69,10 @@ function App() {
               <HappyHour
                 twoHoursProgram={twoHoursProgram}
                 threeHoursProgram={threeHoursProgram}
+                pricesToday={pricesToday}
+                pricesTomorrow={pricesTomorrow}
+                setTwoHoursProgram={setTwoHoursProgram}
+                setThreeHoursProgram={setThreeHoursProgram}
               />
             }
           />
@@ -66,8 +81,8 @@ function App() {
             element={
               <Settings
                 twoHoursProgram={twoHoursProgram}
-                setTwoHoursProgram={setTwoHoursProgram}
                 threeHoursProgram={threeHoursProgram}
+                setTwoHoursProgram={setTwoHoursProgram}
                 setThreeHoursProgram={setThreeHoursProgram}
               />
             }

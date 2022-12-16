@@ -1,15 +1,34 @@
 import React from "react";
-import { ToggleButton } from "react-bootstrap";
+import { Program } from "../components/Functions";
 
 export default function Expenses(props) {
+  // useEffect(() => {
+  //   getSettings(props.setTwoHoursProgram, props.setThreeHoursProgram);
+  // }, []);
   return (
     <main style={{ padding: "1rem 0" }}>
-      <h2>
-        {props.twoHoursProgram ? "2h activated" : "Activate 2h on settings"}
-      </h2>
-      <h2>
-        {props.threeHoursProgram ? "3h activated" : "Activate 3h on settings"}
-      </h2>
+      {!props.twoHoursProgram && !props.threeHoursProgram && (
+        <h3>No programs. Go to settings and enable program!</h3>
+      )}
+      <div>
+        <h5>{props.twoHoursProgram && "Two hours program"}</h5>
+        {props.pricesToday && props.twoHoursProgram && (
+          <Program hours={2} prices={props.pricesToday} day="today" />
+        )}
+        {props.pricesTomorrow && props.twoHoursProgram && (
+          <Program hours={2} prices={props.pricesTomorrow} day="tomorrow" />
+        )}
+      </div>
+      <p> </p>
+      <div>
+        <h5>{props.threeHoursProgram && "Three hours program"}</h5>
+        {props.pricesToday && props.threeHoursProgram && (
+          <Program hours={3} prices={props.pricesToday} day="today" />
+        )}
+        {props.pricesTomorrow && props.threeHoursProgram && (
+          <Program hours={3} prices={props.pricesTomorrow} day="tomorrow" />
+        )}
+      </div>
     </main>
   );
 }

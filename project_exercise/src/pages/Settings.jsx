@@ -1,13 +1,17 @@
 import React from "react";
 import Switch from "../components/Switch";
-import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export default function Settings(props) {
-  const [value, setValue] = useState(false);
+  // useEffect(() => {
+  //   getSettings(props.setTwoHoursProgram, props.setThreeHoursProgram);
+  // }, []);
 
+  // useEffect(() => {
+  //   storeSettings(props.twoHoursProgram, props.threeHoursProgram);
+  // }, [props.twoHoursProgram, props.threeHoursProgram]);
   return (
     <main style={{ padding: "1rem 0" }}>
       <Container>
