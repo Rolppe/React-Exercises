@@ -1,14 +1,19 @@
 import React from "react";
 import { Program } from "../components/Functions";
 
-export default function Expenses(props) {
-  // useEffect(() => {
-  //   getSettings(props.setTwoHoursProgram, props.setThreeHoursProgram);
-  // }, []);
+const HappyHour = (props) => {
   return (
     <main style={{ padding: "1rem 0" }}>
       {!props.twoHoursProgram && !props.threeHoursProgram && (
-        <h3>No programs. Go to settings and enable program!</h3>
+        <h4
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          No programs. Go to settings and enable program!
+        </h4>
       )}
       <div>
         <h5>{props.twoHoursProgram && "Two hours program"}</h5>
@@ -29,6 +34,27 @@ export default function Expenses(props) {
           <Program hours={3} prices={props.pricesTomorrow} day="tomorrow" />
         )}
       </div>
+      <p> </p>
+      <div>
+        <h5>{props.fourHoursProgram && "Four hours program"}</h5>
+        {props.pricesToday && props.fourHoursProgram && (
+          <Program hours={4} prices={props.pricesToday} day="today" />
+        )}
+        {props.pricesTomorrow && props.fourHoursProgram && (
+          <Program hours={4} prices={props.pricesTomorrow} day="tomorrow" />
+        )}
+      </div>
+      <p> </p>
+      <div>
+        <h5>{props.fiveHoursProgram && "Five hours program"}</h5>
+        {props.pricesToday && props.fiveHoursProgram && (
+          <Program hours={5} prices={props.pricesToday} day="today" />
+        )}
+        {props.pricesTomorrow && props.fiveHoursProgram && (
+          <Program hours={5} prices={props.pricesTomorrow} day="tomorrow" />
+        )}
+      </div>
     </main>
   );
-}
+};
+export default HappyHour;

@@ -1,13 +1,8 @@
 import React from "react";
-
-import PriceList from "../components/PriceList";
+import { PriceList } from "../components/Functions";
 import "./Prices.css";
 
-export default function Prices(props) {
-  // useEffect(() => {
-  //   console.log("type of prices today: " + pricesTomorrow[0]);
-  // }, [pricesToday]);
-
+const Prices = (props) => {
   return (
     <main className="Main">
       <div className="float-container">
@@ -29,4 +24,5 @@ export default function Prices(props) {
       </div>
     </main>
   );
-}
+};
+export default Prices;

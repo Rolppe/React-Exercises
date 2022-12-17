@@ -5,7 +5,6 @@ import HappyHour from "./pages/HappyHour";
 import Settings from "./pages/Settings";
 import Prices from "./pages/Prices";
 import Layout from "./components/Layout";
-import "./App.css";
 import {
   getDateTodayAndTomorrow,
   getCurrentPrices,
@@ -16,22 +15,25 @@ import {
 function App() {
   const [twoHoursProgram, setTwoHoursProgram] = useState(false);
   const [threeHoursProgram, setThreeHoursProgram] = useState(false);
-  let [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
+  const [fourHoursProgram, setFourHoursProgram] = useState(false);
+  const [fiveHoursProgram, setFiveHoursProgram] = useState(false);
+  const [dateToday, dateTomorrow] = getDateTodayAndTomorrow();
   const [pricesToday, setPricesToday] = useState([null]);
   const [pricesTomorrow, setPricesTomorrow] = useState([null]);
   const [settingsArrived, setSettingsArrived] = useState(false);
-  // useEffect(() => {
-  //   console.log("app twoHoursProgram: " + twoHoursProgram);
-  // }, [twoHoursProgram]);
 
-  // useEffect(() => {
-  //   console.log("app threeHoursProgram: " + threeHoursProgram);
-  // }, [threeHoursProgram]);
-
+  // initial start
   useEffect(() => {
-    //storeSettings(twoHoursProgram, threeHoursProgram);
-    getSettings(setTwoHoursProgram, setThreeHoursProgram, setSettingsArrived);
+    // get saved settings
+    getSettings(
+      setTwoHoursProgram,
+      setThreeHoursProgram,
+      setFourHoursProgram,
+      setFiveHoursProgram,
+      setSettingsArrived
+    );
 
+    // Fetch price data from server and then set it to useStates
     fetch("https://ohjelmistoprojekti-production.up.railway.app/pricejson/")
       .then((result) => {
         return result.json();
@@ -40,15 +42,20 @@ function App() {
         setPricesToday(getCurrentPrices(dateToday, data));
         setPricesTomorrow(getCurrentPrices(dateTomorrow, data));
         setPricesToday(getCurrentPrices(dateToday, data));
-      })
-      .then(() => {});
+      });
   }, []);
 
+  // if settings chances store them
   useEffect(() => {
     if (settingsArrived) {
-      storeSettings(twoHoursProgram, threeHoursProgram);
+      storeSettings(
+        twoHoursProgram,
+        threeHoursProgram,
+        fourHoursProgram,
+        fiveHoursProgram
+      );
     }
-  }, [twoHoursProgram, threeHoursProgram]);
+  }, [twoHoursProgram, threeHoursProgram, fourHoursProgram, fiveHoursProgram]);
 
   return (
     <div className="Main">
@@ -69,6 +76,8 @@ function App() {
               <HappyHour
                 twoHoursProgram={twoHoursProgram}
                 threeHoursProgram={threeHoursProgram}
+                fourHoursProgram={fourHoursProgram}
+                fiveHoursProgram={fiveHoursProgram}
                 pricesToday={pricesToday}
                 pricesTomorrow={pricesTomorrow}
                 setTwoHoursProgram={setTwoHoursProgram}
@@ -82,8 +91,12 @@ function App() {
               <Settings
                 twoHoursProgram={twoHoursProgram}
                 threeHoursProgram={threeHoursProgram}
+                fourHoursProgram={fourHoursProgram}
+                fiveHoursProgram={fiveHoursProgram}
                 setTwoHoursProgram={setTwoHoursProgram}
                 setThreeHoursProgram={setThreeHoursProgram}
+                setFourHoursProgram={setFourHoursProgram}
+                setFiveHoursProgram={setFiveHoursProgram}
               />
             }
           />

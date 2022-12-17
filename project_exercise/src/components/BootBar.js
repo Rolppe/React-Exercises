@@ -4,6 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+// This is Bootstrap navigation bar. "Buttons" ar linked to adresses
 function BootBar() {
   return (
     <>

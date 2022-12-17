@@ -3,50 +3,77 @@ import Switch from "../components/Switch";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import BootModal from "../components/BootModal";
 
-export default function Settings(props) {
-  // useEffect(() => {
-  //   getSettings(props.setTwoHoursProgram, props.setThreeHoursProgram);
-  // }, []);
-
-  // useEffect(() => {
-  //   storeSettings(props.twoHoursProgram, props.threeHoursProgram);
-  // }, [props.twoHoursProgram, props.threeHoursProgram]);
+const Settings = (props) => {
   return (
-    <main style={{ padding: "1rem 0" }}>
+    <div style={{ padding: "1rem 0" }}>
       <Container>
         <Row>
-          <Col xs={2}>
+          <Col xs={1}>
             <Switch
               checked={props.twoHoursProgram}
               onChange={() => {
                 props.setTwoHoursProgram(!props.twoHoursProgram);
               }}
             />
-            <h1>2h program</h1>
           </Col>
-          <Col xs={2}>
+          <Col>
+            <h2>2h program</h2>
+          </Col>
+          <Row>
+            <Col xs={1}>
+              <Switch
+                checked={props.threeHoursProgram}
+                onChange={() => {
+                  props.setThreeHoursProgram(!props.threeHoursProgram);
+                }}
+              />
+            </Col>
+            <Col>
+              <h2>3h program</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={1}>
+              <Switch
+                checked={props.fourHoursProgram}
+                onChange={() => {
+                  props.setFourHoursProgram(!props.fourHoursProgram);
+                }}
+              />
+            </Col>
+            <Col>
+              <h2>4h program</h2>
+            </Col>
+          </Row>
+        </Row>
+        <Row>
+          <Col xs={1}>
             <Switch
-              checked={props.threeHoursProgram}
+              checked={props.fiveHoursProgram}
               onChange={() => {
-                props.setThreeHoursProgram(!props.threeHoursProgram);
+                props.setFiveHoursProgram(!props.fiveHoursProgram);
               }}
             />
-            <h1>3h program</h1>
+          </Col>
+          <Col>
+            <h2>5h program</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={2}>
+            <BootModal
+              setTwoHoursProgram={props.setTwoHoursProgram}
+              setThreeHoursProgram={props.setThreeHoursProgram}
+              setFourHoursProgram={props.setFourHoursProgram}
+              setFiveHoursProgram={props.setFiveHoursProgram}
+            />
           </Col>
         </Row>
       </Container>
-    </main>
+    </div>
   );
-}
+};
 
-// <button onClick={chanceState}>Chache state</button>
-// <h2>{props.twoHours ? "Settings" : " "}</h2>
-// <Switch
-//   isOn={value}
-//   onColor="#f0f"
-//   handleToggle={() => {
-//     setValue(!value);
-//     props.setTwoHours(!props.twoHours);
-//   }}
-// />
+export default Settings;
