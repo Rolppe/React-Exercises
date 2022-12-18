@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Get date for today and tomorrow in returning strings.
 export function getDateTodayAndTomorrow() {
@@ -89,7 +89,7 @@ export async function storeSettings(
   );
 
   // Store settings to firebase
-  const response = await fetch(
+  await fetch(
     "https://price-settings-default-rtdb.europe-west1.firebasedatabase.app/settings.json",
     {
       method: "POST",
@@ -99,7 +99,6 @@ export async function storeSettings(
       },
     }
   );
-  const data = await response.json();
 }
 
 // Get settings from firebase
@@ -164,7 +163,7 @@ export function Program(props) {
     priceSample = 0;
   }
   // Calculate price average for cheapest hours
-  if (minprice != 1000) {
+  if (minprice !== 1000) {
     minprice = Math.round((minprice / amountOfHours) * 100) / 100;
     // Render outcome
     return (
