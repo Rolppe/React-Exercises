@@ -5,6 +5,9 @@ import HappyHour from "./pages/HappyHour";
 import Settings from "./pages/Settings";
 import Prices from "./pages/Prices";
 import Layout from "./components/Layout";
+
+import { initializeApp } from "firebase/app";
+
 import {
   getDateTodayAndTomorrow,
   getCurrentPrices,
@@ -13,6 +16,8 @@ import {
 } from "./components/Functions";
 
 function App() {
+  //  content_copy;
+
   const [twoHoursProgram, setTwoHoursProgram] = useState(false);
   const [threeHoursProgram, setThreeHoursProgram] = useState(false);
   const [fourHoursProgram, setFourHoursProgram] = useState(false);
